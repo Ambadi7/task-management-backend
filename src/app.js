@@ -8,15 +8,11 @@ import crypto from "crypto"
 
 const app = express()
 
-app.use(cors(
-    {
-  origin: [
-    'http://localhost:3000', // for local dev
-    'https://task-management-frontend-sgq8.vercel.app/', // replace with your actual deployed URL
-  ],
-  credentials: true, // if you're using cookies or auth headers
-}
-))
+app.use(cors({
+  origin: 'https://task-management-frontend-sgq8.vercel.app', // allow your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // if using cookies or authentication headers
+}));
 app.use(morgan())
 app.use(express.json())
 app.use(cookieParser())
